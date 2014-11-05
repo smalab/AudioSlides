@@ -9,11 +9,17 @@ public class soundclip : MonoBehaviour {
 	//public bool b;
 	public int c;
 	public int d;
+	public int e = 0;
 	
 	void Start () {
 
 		//AudioSourceコンポーネントを取得し、変数に格納
 		sound01 = GetComponent<AudioSource>();
+		//c = GetComponent<myscript>().flag;
+		//d = GetComponent<myscript>().flag1;
+		/*if (c == 1 && d == 0 ) {
+						sound01.PlayOneShot (sound01.clip);
+				}*/
 		//sound01.PlayOneShot(sound01.clip);
 		//a = GetComponent<myscript>().situation1;
 		//b = GetComponent<myscript>().situation3;
@@ -24,16 +30,20 @@ public class soundclip : MonoBehaviour {
 		c = GetComponent<myscript>().flag;
 		d = GetComponent<myscript>().flag1;
 		//指定のキーが押されたら音声ファイル再生
-		if (c == 1 && d == 0 && !audio.isPlaying) {
-			sound01.PlayOneShot(sound01.clip);
-			sound01.clip = otherClip;
-			audio.Play();
+		if (c == 1 && d == 0 && e == 0) {
+			sound01.PlayOneShot (sound01.clip);
+			e++;
+			//sound01.Play( );
+			//sound01.clip = otherClip;
 				}
+		//Debug.Log (sound01.isPlaying);
+		//if (!sound01.isPlaying){
+			//sound01.clip = otherClip;
+			//sound01.Play();
+				}
+		//Debug.Log (sound01.isPlaying);
+		//if( d == 1 )
+			//sound01.audio.Stop();
 
-	
-		if( d == 1 ){
-			sound01.audio.Stop();
-		}
 			//sound01.audio.play(sound01.clip);
 		}
-}

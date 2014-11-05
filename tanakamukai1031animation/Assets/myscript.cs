@@ -60,6 +60,7 @@ public class myscript : MonoBehaviour {
 		transform.Rotate (1f, 1f, 1f);
 		if(animation.IsPlaying("anim1")==false){
 			flag = 1;
+			Debug.Log (flag+"あ");
 			//new WaitForSeconds(5.0f);
 			if(Input.GetKeyDown(KeyCode.Space)){
 				flag1 = 1;
@@ -69,8 +70,10 @@ public class myscript : MonoBehaviour {
 			}else{
 			//animation.PlayQueued("anim1",QueueMode.PlayNow);
 			//GameObject.Find ("GUI Text").guiText.text = "Anim1!";
+
 			flag = 0;
 			flag1 = 0;
+			Debug.Log (flag + "い");
 		}
 	}
 }
