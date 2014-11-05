@@ -3,7 +3,8 @@ using System.Collections;
 
 public class soundclip : MonoBehaviour {
 	
-	private AudioSource sound01;
+	public AudioSource sound01;
+	public AudioClip otherClip;
 	//public bool a;
 	//public bool b;
 	public int c;
@@ -23,8 +24,11 @@ public class soundclip : MonoBehaviour {
 		c = GetComponent<myscript>().flag;
 		d = GetComponent<myscript>().flag1;
 		//指定のキーが押されたら音声ファイル再生
-		if(c == 1 && d ==0) 
+		if (c == 1 && d == 0 && !audio.isPlaying) {
 			sound01.PlayOneShot(sound01.clip);
+			sound01.clip = otherClip;
+			audio.Play();
+				}
 
 	
 		if( d == 1 ){
