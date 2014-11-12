@@ -6,11 +6,12 @@ public class Moveimage : MonoBehaviour {
 	public AnimationCurve curve2;
 	public AnimationClip clip2 ;
 	public int i=0;
-	public float[] value =new float[10];
+	public float[] value =new float[10];//こちらで１０と指定してもEditorで５と指定しているので無効
 	// Use this for initialization
 	void Start () {
 		GameObject.Find ("GUI Text").guiText.text = "moveAnimation sample";
 		curve2 = new AnimationCurve (curve.keys);
+		Debug.Log (value.Length);
 	}
 	
 	// Update is called once per frame
@@ -32,12 +33,7 @@ public class Moveimage : MonoBehaviour {
 		Keyframe testkey2 = new Keyframe (0, value[i]);
 		Keyframe testkey3 = new Keyframe (3, p2.x);
 		//Debug.Logは6こ以上並べれない？
-		Debug.Log (value[0]);
-		Debug.Log (value[1]);
-		Debug.Log (value[2]);
-		Debug.Log (value[3]);
-		Debug.Log (value[4]);
-		Debug.Log (value[5]);
+		Debug.Log (value.Length);
 		curve2.MoveKey (0, testkey2);
 		curve2.MoveKey (3, testkey3);
 		clip2.SetCurve ("", typeof(Transform), "localPosition.x", curve2);
