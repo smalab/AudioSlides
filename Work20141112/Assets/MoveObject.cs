@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Moveimage : MonoBehaviour {
+public class MoveObject : MonoBehaviour {
 	public AnimationCurve curve;//初期の２つのキーフレームを初期化および操作
 	public AnimationCurve curve2;
 	public AnimationClip clip2 ;
@@ -11,24 +11,24 @@ public class Moveimage : MonoBehaviour {
 	void Start () {
 		GameObject.Find ("GUI Text").guiText.text = "moveAnimation sample";
 		curve2 = new AnimationCurve (curve.keys);
+		value [1] = 10f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	if (Input.GetMouseButtonUp (0)) {
-						Debug.Log ("左クリック");
+		if (Input.GetMouseButtonUp (0)) {
+			Debug.Log ("左クリック");
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit = new RaycastHit();
 			if(Physics.Raycast (ray,out hit) && gameObject != hit.collider.gameObject){
 				moveAnimation2(hit.collider.gameObject.transform.position);
 				Debug.Log ("選択移動");
 			}
-				}
+		}
 	}
-
+	
 	void moveAnimation2 (Vector3 p2){
 		//curve2はcurveの情報を上書きし続けているため、最初のcurveの動きしか反映されない
-		value [i] = curve2.Evaluate (3f);
 		Keyframe testkey2 = new Keyframe (0, value[i]);
 		Keyframe testkey3 = new Keyframe (3, p2.x);
 		//Debug.Logは6こ以上並べれない？
@@ -42,9 +42,10 @@ public class Moveimage : MonoBehaviour {
 		clip2.SetCurve ("", typeof(Transform), "localPosition.x", curve2);
 		animation.AddClip (clip2, "moveclip2");
 		animation.Play ("moveclip2");
+		value [i] = curve2.Evaluate (1f);
 		i=i+1;
 	}
-
+	
 	/*void moveAnimation (Vector3 p) {
 		float dx2 = (p.x + gameObject.transform.position.x)/2; 
 		float dy2 = (p.y + gameObject.transform.position.y)/2; 
@@ -84,7 +85,7 @@ public class Moveimage : MonoBehaviour {
 				animation.AddClip (clip, "moveclip");
 				animation.Play ("moveclip");
 		}*/
-
-
-	}
+	
+	
+}
 
