@@ -7,7 +7,7 @@ public class select2 : MonoBehaviour {
 	public  GameObject[] imageArrays = new GameObject[2];//移動先オブジェクト
 	public int[] moveAnimationPatterns = new int[4] ;//アニメーションのパターンの順番
 	int countObject = -1;//現在のオブジェクトの位置 始めに０番目の地点へ右キーで移動
-	
+
 	struct Curve{
 		public float height;//基準の高さ
 		public float[] keyframeValues;//相対高度
@@ -21,38 +21,40 @@ public class select2 : MonoBehaviour {
 
 	void Start () {
 		GameObject.Find ("GUI Text").guiText.text = "moveAnimation3 sample";
-		Debug.Log(animationCurvePattern[0].Evaluate(animationCurvePattern[0].keys[3].time)+" firstkey"+3);
-		Debug.Log(animationCurvePattern[0].Evaluate(0.57f)+" firstkey"+3);
-//Evaluateの時間指定が問題  floatでじかんしてい
+
 		GetRelativeHeightsFromAnimationCurvePattern (animationCurvePattern,curveArray);
 
-		if (animationCurvePatternZoom[0].length >= 2) {
-			GetRelativeHeightsFromAnimationCurvePattern (animationCurvePatternZoom,curveZoom);
+		if (animationCurvePatternZoom.Length >= 1) {
+						if (animationCurvePatternZoom [0].length >= 2) {
+								GetRelativeHeightsFromAnimationCurvePattern (animationCurvePatternZoom, curveZoom);
+								
+						}
 				}
-
+		Debug.Log (curveArray [0].height+ " firstHeight");
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.RightArrow)){	
 			if(countObject < imageArrays.Length-1){
-				countObject += 1;
+				countObject ++;
 				moveAnimation3(imageArrays[countObject].transform.position,moveAnimationPatterns[countObject]);
-				Debug.Log (1);
+				Debug.Log (1 +" cnt_"+countObject);
 			}
 		}
 
 		if(Input.GetKeyDown(KeyCode.LeftArrow)){
 			if(countObject > 0){
-				countObject -=1;
+				countObject --;
 				moveAnimation3(imageArrays[countObject].transform.position, moveAnimationPatterns[countObject]);
-				Debug.Log (2);
+				Debug.Log (2+" cnt_"+countObject);
 			}
 		}
 	}
 
 	
 	void GetRelativeHeightsFromAnimationCurvePattern(AnimationCurve[] animationCurvePattern, Curve[] curveArray){
+		//Debug.Log ("animationCurvePattern.Length=" + animationCurvePattern.Length);
 		for (int a=0; a<animationCurvePattern.Length; a++) {
 			curveArray [a].keyframeValues = new float[animationCurvePattern [a].length];
 		}//長さ確定　インスタンス化
@@ -61,7 +63,10 @@ public class select2 : MonoBehaviour {
 			curveArray [k].height = 
 				animationCurvePattern [k].Evaluate (animationCurvePattern [k].keys[animationCurvePattern [k].length- 1].time) 
 					- animationCurvePattern [k].Evaluate (animationCurvePattern [k].keys[0].time);
+			///Debug.Log("curveArray["+k+"].height="+curveArray[k].height);
 			for (int i=1; i<animationCurvePattern[k].length-1; i++) {
+				/*Debug.Log("animationCurvePattern [k].Evaluate (animationCurvePattern [k].keys[i].time)_"+animationCurvePattern [k].Evaluate (animationCurvePattern [k].keys[i].time));
+				Debug.Log("animationCurvePattern [k].Evaluate (animationCurvePattern [k].keys[0].time)_"+animationCurvePattern [k].Evaluate (animationCurvePattern [k].keys[0].time));*/
 				curveArray [k].keyframeValues [i] = animationCurvePattern [k].Evaluate (animationCurvePattern [k].keys[i].time)
 					- animationCurvePattern [k].Evaluate (animationCurvePattern [k].keys[0].time);
 			}//相対高度へ変換
@@ -70,20 +75,24 @@ public class select2 : MonoBehaviour {
 
 
 	void moveAnimation3 (Vector3 targetPosition ,int animationNumber){
+		AnimationClip clip3 = new AnimationClip ();
 		Debug.Log("X");
 		AnimationCurve curveX =
 			GetAdjustedAnimationCurve(targetPosition.x,gameObject.transform.position.x,animationCurvePattern,animationNumber,curveArray);
+
 		Debug.Log("Y");
 		AnimationCurve curveY =
 			GetAdjustedAnimationCurve(targetPosition.y,gameObject.transform.position.y,animationCurvePattern,animationNumber,curveArray);
-		Debug.Log("Z");
-		AnimationCurve curveZ =
-			GetAdjustedAnimationCurve(targetPosition.z-2,gameObject.transform.position.z,animationCurvePatternZoom,0,curveZoom);
+
+		Debug.Log ("Z");
+		AnimationCurve curveZ = animationCurvePatternZoom [0];
+			//GetAdjustedAnimationCurve (targetPosition.z - 2, gameObject.transform.position.z, animationCurvePatternZoom, 0, curveZoom);
+			clip3.SetCurve ("", typeof(Transform), "localPosition.z", curveZ);
+	
 		Debug.Log("Curvechanged");
-		AnimationClip clip3 = new AnimationClip ();
+
 		clip3.SetCurve ("", typeof(Transform), "localPosition.x", curveX);
 		clip3.SetCurve ("", typeof(Transform), "localPosition.y", curveY);
-		clip3.SetCurve ("", typeof(Transform), "localPosition.z", curveZ);
 		animation.AddClip (clip3, "moveclip3");
 		animation.Play ("moveclip3");
 		
@@ -92,22 +101,30 @@ public class select2 : MonoBehaviour {
 	AnimationCurve GetAdjustedAnimationCurve(float targetPosition,float transformPosition,AnimationCurve[] animationCurvePattern ,int animationNumber ,Curve[] curveArray){
 
 		AnimationCurve curve = new AnimationCurve ();
-		curve.keys = animationCurvePattern [animationNumber].keys;
-		float distanceToGoAdjusted = (targetPosition - transformPosition) / curveArray [animationNumber].height; //元の幅と変更後の幅の比率
+			curve.keys = animationCurvePattern[animationNumber].keys;
 
-		curve.MoveKey (0,new Keyframe (0, transformPosition));//配列0ばんめのキーフレーム変更
-		curve.MoveKey (curve.length - 1, new Keyframe (animationCurvePattern [animationNumber].length - 1, targetPosition) );//終端キーフレーム変更
-		Debug.Log (transformPosition+" c.P");
-		Debug.Log (targetPosition+" t.P");
+		float distanceToGo = targetPosition - transformPosition;
+		float distanceToGoAdjusted = distanceToGo / curveArray [animationNumber].height; //元の幅と変更後の幅の比率
+
+		Debug.Log ("distanceTOGo_" + distanceToGo);
+
+		curve.MoveKey (0,new Keyframe (curve.keys[0].time, transformPosition));//配列0ばんめのキーフレーム変更
+		curve.MoveKey (curve.length - 1, new Keyframe (curve.keys[curve.length - 1].time, targetPosition) );//終端キーフレーム変更
 
 		for (int i=1; i<animationCurvePattern[animationNumber].length-1; i++) {
-			curve.MoveKey (i, new Keyframe (i, curve.Evaluate (curve.keys[0].time) + curveArray [animationNumber].keyframeValues [i] * distanceToGoAdjusted));
-			Debug.Log(animationCurvePattern[animationNumber].Evaluate(curve.keys[i].time)+" firstkey"+i +" anime"+animationNumber);
-			Debug.Log(curve.Evaluate (curve.keys[0].time) + curveArray [animationNumber].keyframeValues [i] * distanceToGoAdjusted + " cangedkey"+i);
+			curve.MoveKey (i, new Keyframe (curve.keys[i].time, (curve.Evaluate (curve.keys[0].time) + curveArray [animationNumber].keyframeValues [i] * distanceToGoAdjusted)  )  );
+			Debug.Log("distanceToGoAdjusted_"+distanceToGoAdjusted);
+			Debug.Log("curveArray_"+curveArray[animationNumber].keyframeValues[i]);
+			Debug.Log(curve.keys[i].time + "time  " + "number "+i);
+			Debug.Log(animationCurvePattern[animationNumber].Evaluate(animationCurvePattern[animationNumber].keys[i].time) +" firstkey"+i +" anime"+animationNumber);
+			Debug.Log(curve.Evaluate (curve.keys[i].time) + " changedkey"+i);
+
 		}//中間のキーフレーム置き換え
 
-		return curve;
+		Debug.Log (transformPosition+" c.P " +targetPosition+" t.P");
+		Debug.Log(distanceToGoAdjusted + " changeheight");
 
+		return curve;
 	}
 		
 
