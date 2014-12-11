@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MoveCamera : MonoBehaviour {
 	
 	public AnimationCurve[] animationCurvePattern = new AnimationCurve[7];//予め設定する値（アニメーションのパターン）0-4で指定
-	public  GameObject[] imageArrays = new GameObject[2];//移動先オブジェクト
+	public  GameObject[] imageArrays = new GameObject[7];//移動先オブジェクト
 	public int[] moveAnimationPatterns = new int[7] ;//アニメーションのパターンの順番
 	int countObject = -1;//現在のオブジェクトの位置 始めに０番目の地点へ右キーで移動
 	
@@ -35,7 +36,7 @@ public class MoveCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 		RightArrowButton();
 		LeftArrowButton();
 	
@@ -52,7 +53,7 @@ public class MoveCamera : MonoBehaviour {
 			curveArray [k].height = 
 				animationCurvePattern [k].Evaluate (animationCurvePattern [k].keys[animationCurvePattern [k].length- 1].time) 
 					- animationCurvePattern [k].Evaluate (animationCurvePattern [k].keys[0].time);
-			///Debug.Log("curveArray["+k+"].height="+curveArray[k].height);
+			Debug.Log("curveArray["+k+"].height="+curveArray[k].height);
 			for (int i=1; i<animationCurvePattern[k].length-1; i++) {
 				/*Debug.Log("animationCurvePattern [k].Evaluate (animationCurvePattern [k].keys[i].time)_"+animationCurvePattern [k].Evaluate (animationCurvePattern [k].keys[i].time));
 				Debug.Log("animationCurvePattern [k].Evaluate (animationCurvePattern [k].keys[0].time)_"+animationCurvePattern [k].Evaluate (animationCurvePattern [k].keys[0].time));*/
@@ -63,7 +64,7 @@ public class MoveCamera : MonoBehaviour {
 	}
 	
 	
-	void moveAnimation3 (Vector3 targetPosition ,int animationNumber){
+	public void moveAnimation3 (Vector3 targetPosition ,int animationNumber){
 		AnimationClip clip3 = new AnimationClip ();
 		Debug.Log("X");
 		AnimationCurve curveX =
@@ -122,6 +123,7 @@ public class MoveCamera : MonoBehaviour {
 			moveAnimation3(imageArrays[countObject].transform.position,moveAnimationPatterns[countObject]);
 			Debug.Log (1 +" cnt_"+countObject);
 		}
+		return;
 	}
 	
 	public void	LeftArrowButton(){
@@ -130,6 +132,7 @@ public class MoveCamera : MonoBehaviour {
 			moveAnimation3(imageArrays[countObject].transform.position, moveAnimationPatterns[countObject]);
 			Debug.Log (2+" cnt_"+countObject);
 		}
+		return;
 	}
 	
 	
