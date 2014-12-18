@@ -24,22 +24,20 @@ public class MoveCamera : MonoBehaviour {
 		GameObject.Find ("GUI Text").guiText.text = "moveAnimation3 sample";
 		
 		GetRelativeHeightsFromAnimationCurvePattern (animationCurvePattern,curveArray);
-		
-		if (animationCurvePatternZoom.Length >= 1) {
-			if (animationCurvePatternZoom [0].length >= 2) {
-				GetRelativeHeightsFromAnimationCurvePattern (animationCurvePatternZoom, curveZoom);
+		//if (animationCurvePatternZoom.Length >= 1) {
+		//	if (animationCurvePatternZoom [0].length >= 2) {
+		//		GetRelativeHeightsFromAnimationCurvePattern (animationCurvePatternZoom, curveZoom);
 				
-			}
-		}
+		//	}
+		//}
 		Debug.Log (curveArray [0].height+ " firstHeight");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		RightArrowButton();
-		LeftArrowButton();
-	
+
+
 	}
 	
 	
