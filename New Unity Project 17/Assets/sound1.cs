@@ -5,8 +5,8 @@ using System.Collections;
 public class sound1 : MonoBehaviour {
 
 	public int cnt=0;
-	public AudioClip Kalimba;
-	public AudioClip battle;
+	public AudioClip slide1;
+	public AudioClip slide2;
 
 	// Use this for initialization
 	void Start () {
@@ -37,10 +37,10 @@ public class sound1 : MonoBehaviour {
 	public void slide_sound(){
 
 			if(cnt==2){
-			audio.PlayOneShot (Kalimba,0.7F);
+			audio.PlayOneShot(slide1,0.7F);
 			}else if(cnt==3){
 				audio.Stop ();
-				audio.PlayOneShot (battle);
+				audio.PlayOneShot(slide2,0.7F);
 			}
 		}
 }
