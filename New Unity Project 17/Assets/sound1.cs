@@ -42,9 +42,11 @@ public class sound1 : MonoBehaviour {
 
 	public void slide_sound(){
 
-			if(cnt==2){
+			if(cnt==1){
+				audio.Stop ();
+			}else if(cnt==2){
 			    audio.Stop();
-				audio.PlayOneShot(slide1,0.7F);
+				audio.PlayOneShot(slide1,0.7F);				
 			}else if(cnt==3){
 				audio.Stop ();
 				audio.PlayOneShot(slide2,0.7F);
