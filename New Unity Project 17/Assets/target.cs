@@ -14,17 +14,19 @@ public class target : MonoBehaviour {
 	}
 	public void slide_click() {
 		transform.position = new Vector3 (0f, 0f, -2.844865f);
-		cnt++;
+		cnt=1;
 		return;
 	}
 
 	public void slidesound(){
-			audio.Play();
+		audio.Stop ();
+		audio.Play();
 		return;
-		}
+	}
 
 	public void soundend(){
 		audio.Stop ();
+		cnt = 0;
 		}
 
 
