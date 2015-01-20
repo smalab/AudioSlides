@@ -64,5 +64,11 @@ public class sound1 : MonoBehaviour {
 				audio.PlayOneShot(slide6,0.7F);
 			}
 		}
+	
+	public void soundend(){
+		audio.Stop ();
+		cnt = 0;
+	}
+	
 
 	}
