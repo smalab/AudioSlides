@@ -13,7 +13,7 @@ public class target_slide6 : MonoBehaviour {
 		
 	}
 	public void slide_click() {
-		transform.position = new Vector3 (40f, 0f, -2.844865f);
+		transform.position = new Vector3 (670f, 170f, -120f);
 		cnt=6;
 		return;
 	}

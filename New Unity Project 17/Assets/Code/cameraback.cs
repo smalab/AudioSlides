@@ -12,7 +12,7 @@ public class cameraback : MonoBehaviour {
 	void Update () {
 	}
 	public void camera_back(){
-			transform.position = new Vector3 (30f, 5f, -45f);
+		transform.position = new Vector3 (422.41f, 256.91f, -600f);
 		Debug.Log("back");
 	}
 
