@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-public class target_slide7 : MonoBehaviour {
+public class target_slide5 : MonoBehaviour {
 	public int cnt=0;
 	// Use this for initialization
 	void Start () {
@@ -13,8 +13,9 @@ public class target_slide7 : MonoBehaviour {
 		
 	}
 	public void slide_click() {
-		transform.position = new Vector3 (60f, 10f, -2.844865f);
-		cnt=7;
+		transform.position = new Vector3 (540f, 345f, -120f);
+		cnt=5;
+		Debug.Log (cnt);
 		return;
 	}
 	

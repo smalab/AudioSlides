@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 public class target_slide6 : MonoBehaviour {
-	public int cnt=0;
+	public int cnt;
 	// Use this for initialization
 	void Start () {
 		
@@ -13,8 +13,9 @@ public class target_slide6 : MonoBehaviour {
 		
 	}
 	public void slide_click() {
-		transform.position = new Vector3 (670f, 170f, -120f);
+		transform.position = new Vector3 (680f, 175f, -120f);
 		cnt=6;
+		Debug.Log (cnt);
 		return;
 	}
 	
@@ -22,6 +23,10 @@ public class target_slide6 : MonoBehaviour {
 		audio.Stop ();
 		audio.Play();
 		return;
+	}
+	public void soundend(){
+		audio.Stop ();
+		cnt = 0;
 	}
 	
 }

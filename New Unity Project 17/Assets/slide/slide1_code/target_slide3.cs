@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-public class target_slide4 : MonoBehaviour {
-	public int cnt=0;
-	// Use this for initialization
+public class target_slide3 : MonoBehaviour {
+	public int cnt;
 	void Start () {
 		
 	}
@@ -13,9 +12,11 @@ public class target_slide4 : MonoBehaviour {
 		
 	}
 	public void slide_click() {
-		transform.position = new Vector3 (430f, 177f, -120f);
-		cnt=4;
+		transform.position = new Vector3 (325f, 345f, -120f);
+		cnt=3;
+		Debug.Log(cnt);
 		return;
+	
 	}
 	
 	public void slidesound(){
@@ -23,5 +24,11 @@ public class target_slide4 : MonoBehaviour {
 		audio.Play();
 		return;
 	}
+	
+	public void soundend(){
+		audio.Stop ();
+		cnt = 0;
+	}
+	
 	
 }
