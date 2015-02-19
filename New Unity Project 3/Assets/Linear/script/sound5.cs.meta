@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 195794fe497da4fb2bee9bdd30d2d676
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - slide01: {fileID: 8300000, guid: 138785af9c0be476f82dae4b1f137afa, type: 3}
+  - slide02: {fileID: 8300000, guid: 1b8fa35c8a65f4e21a90d56ea6c2630b, type: 3}
+  - slide03: {fileID: 8300000, guid: a59e6f6f90c5d4983af4a90c0ac0ec6f, type: 3}
+  - slide04: {fileID: 8300000, guid: 46ad5c22aff3f468d8c097ab503e2f4d, type: 3}
+  - slide05: {fileID: 8300000, guid: 230c8ec1b2dc342d3aac84a4c3f85eec, type: 3}
+  - slide06: {fileID: 8300000, guid: 46d9b5feaf35742289ad55af4a2d597c, type: 3}
+  - slide07: {fileID: 8300000, guid: f39ebfd16922741d88b1101bad742cf3, type: 3}
+  - slide08: {fileID: 8300000, guid: 80badd06675a44be0b83b7d449e58b22, type: 3}
+  - slide09: {fileID: 8300000, guid: cd7947cdc9a464f7bb4fd7fa6bc7320a, type: 3}
+  - slide10: {fileID: 8300000, guid: 8121594d67e8141aab24aa45cbf636c3, type: 3}
+  - slide11: {fileID: 8300000, guid: f88982a0c3858481ca90383866d6a2db, type: 3}
+  - slide12: {fileID: 8300000, guid: d829687d622ff4b1ba6421e65f22e1c8, type: 3}
+  - slide13: {fileID: 8300000, guid: ff14bdef648d141c39c6279f2beade21, type: 3}
+  - slide14: {fileID: 8300000, guid: 58a4dc583121b433f87f33c57643b895, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
