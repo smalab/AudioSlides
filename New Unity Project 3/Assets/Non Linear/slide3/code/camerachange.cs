@@ -12,7 +12,7 @@ public class camerachange : MonoBehaviour {
 	Camera camera3_7;//サブのカメラです
 	Camera camera3_8;//サブのカメラです
 	Camera camera3_9;//サブのカメラです
-	public int cameracnt = 0;
+	public int cnt = 0;
 	
 	void Start (){
 		mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -41,136 +41,160 @@ public class camerachange : MonoBehaviour {
 	}
 	
 	public void changeCamera1(){
-		if (cameracnt == 0) {
-			mainCamera.enabled = false;
-			camera3_1.enabled = true;
-			camera3_2.enabled = false;
-			camera3_3.enabled = false;
-			camera3_4.enabled = false;
-			camera3_5.enabled = false;
-			camera3_6.enabled = false;
-			camera3_7.enabled = false;
-			camera3_8.enabled = false;
-			camera3_9.enabled = false;
-			cameracnt++;
-		}
+		if (cnt == 0) {
+						mainCamera.enabled = false;
+						camera3_1.enabled = true;
+						camera3_2.enabled = false;
+						camera3_3.enabled = false;
+						camera3_4.enabled = false;
+						camera3_5.enabled = false;
+						camera3_6.enabled = false;
+						camera3_7.enabled = false;
+						camera3_8.enabled = false;
+						camera3_9.enabled = false;
+						cnt++;
+				}
 		return;
 	}
 	public void changeCamera2(){
-		mainCamera.enabled = false;
-		camera3_1.enabled = false;
-		camera3_2.enabled= true;
-		camera3_3.enabled= false;
-		camera3_4.enabled= false;
-		camera3_5.enabled= false;
-		camera3_6.enabled= false;
-		camera3_7.enabled= false;
-		camera3_8.enabled= false;
-		camera3_9.enabled= false;
-		cameracnt=2;
+		if (cnt == 0) {
+						mainCamera.enabled = false;
+						camera3_1.enabled = false;
+						camera3_2.enabled = true;
+						camera3_3.enabled = false;
+						camera3_4.enabled = false;
+						camera3_5.enabled = false;
+						camera3_6.enabled = false;
+						camera3_7.enabled = false;
+						camera3_8.enabled = false;
+						camera3_9.enabled = false;
+						cnt = 2;
+						Debug.Log (cnt);
+				}
 		return;
 	}
 	public void changeCamera3(){
-		mainCamera.enabled = false;
-		camera3_1.enabled = false;
-		camera3_2.enabled= false;
-		camera3_3.enabled= true;
-		camera3_4.enabled= false;
-		camera3_5.enabled= false;
-		camera3_6.enabled= false;
-		camera3_7.enabled= false;
-		camera3_8.enabled= false;
-		camera3_9.enabled= false;
-		cameracnt=3;
+		if (cnt == 0) {
+						mainCamera.enabled = false;
+						camera3_1.enabled = false;
+						camera3_2.enabled = false;
+						camera3_3.enabled = true;
+						camera3_4.enabled = false;
+						camera3_5.enabled = false;
+						camera3_6.enabled = false;
+						camera3_7.enabled = false;
+						camera3_8.enabled = false;
+						camera3_9.enabled = false;
+						cnt = 3;
+			            Debug.Log (cnt);
+				}
 		return;
 	}
 	public void changeCamera4(){
-		mainCamera.enabled = false;
-		camera3_1.enabled = false;
-		camera3_2.enabled= false;
-		camera3_3.enabled= false;
-		camera3_4.enabled= true;
-		camera3_5.enabled= false;
-		camera3_6.enabled= false;
-		camera3_7.enabled= false;
-		camera3_8.enabled= false;
-		camera3_9.enabled= false;
-		cameracnt=4;
+		if (cnt == 0) {
+						mainCamera.enabled = false;
+						camera3_1.enabled = false;
+						camera3_2.enabled = false;
+						camera3_3.enabled = false;
+						camera3_4.enabled = true;
+						camera3_5.enabled = false;
+						camera3_6.enabled = false;
+						camera3_7.enabled = false;
+						camera3_8.enabled = false;
+						camera3_9.enabled = false;
+						cnt = 4;
+			Debug.Log (cnt);
+				}
 		return;
 	}
 	
 	public void changeCamera5(){
-		mainCamera.enabled = false;
-		camera3_1.enabled = false;
-		camera3_2.enabled= false;
-		camera3_3.enabled= false;
-		camera3_4.enabled= false;
-		camera3_5.enabled= true;
-		camera3_6.enabled= false;
-		camera3_7.enabled= false;
-		camera3_8.enabled= false;
-		camera3_9.enabled= false;
-		cameracnt=5;
+		if (cnt == 0) {
+						mainCamera.enabled = false;
+						camera3_1.enabled = false;
+						camera3_2.enabled = false;
+						camera3_3.enabled = false;
+						camera3_4.enabled = false;
+						camera3_5.enabled = true;
+						camera3_6.enabled = false;
+						camera3_7.enabled = false;
+						camera3_8.enabled = false;
+						camera3_9.enabled = false;
+						cnt = 5;
+			Debug.Log (cnt);
+				}
 		return;
 	}
 	public void changeCamera6(){
-		mainCamera.enabled = false;
-		camera3_1.enabled = false;
-		camera3_2.enabled= false;
-		camera3_3.enabled= false;
-		camera3_4.enabled= false;
-		camera3_5.enabled= false;
-		camera3_6.enabled= true;
-		camera3_7.enabled= false;
-		camera3_8.enabled= false;
-		camera3_9.enabled= false;
-		cameracnt=6;
+		if (cnt == 0) {
+						mainCamera.enabled = false;
+						camera3_1.enabled = false;
+						camera3_2.enabled = false;
+						camera3_3.enabled = false;
+						camera3_4.enabled = false;
+						camera3_5.enabled = false;
+						camera3_6.enabled = true;
+						camera3_7.enabled = false;
+						camera3_8.enabled = false;
+						camera3_9.enabled = false;
+						cnt = 6;
+			Debug.Log (cnt);
+				}
 		return;
 	}
 	public void changeCamera7(){
-		mainCamera.enabled = false;
-		camera3_1.enabled = false;
-		camera3_2.enabled= false;
-		camera3_3.enabled= false;
-		camera3_4.enabled= false;
-		camera3_5.enabled= false;
-		camera3_6.enabled= false;
-		camera3_7.enabled= true;
-		camera3_8.enabled= false;
-		camera3_9.enabled= false;
-		cameracnt=7;
+		if (cnt == 0) {
+						mainCamera.enabled = false;
+						camera3_1.enabled = false;
+						camera3_2.enabled = false;
+						camera3_3.enabled = false;
+						camera3_4.enabled = false;
+						camera3_5.enabled = false;
+						camera3_6.enabled = false;
+						camera3_7.enabled = true;
+						camera3_8.enabled = false;
+						camera3_9.enabled = false;
+						cnt = 7;
+			Debug.Log (cnt);
+				}
 		return;
 	}
 	public void changeCamera8(){
-		mainCamera.enabled = false;
-		camera3_1.enabled = false;
-		camera3_2.enabled= false;
-		camera3_3.enabled= false;
-		camera3_4.enabled= false;
-		camera3_5.enabled= false;
-		camera3_6.enabled= false;
-		camera3_7.enabled= false;
-		camera3_8.enabled= true;
-		camera3_9.enabled= false;
-		cameracnt=8;
+		if (cnt == 0) {
+						mainCamera.enabled = false;
+						camera3_1.enabled = false;
+						camera3_2.enabled = false;
+						camera3_3.enabled = false;
+						camera3_4.enabled = false;
+						camera3_5.enabled = false;
+						camera3_6.enabled = false;
+						camera3_7.enabled = false;
+						camera3_8.enabled = true;
+						camera3_9.enabled = false;
+						cnt = 8;
+			Debug.Log (cnt);
+				}
 		return;
 	}	
 	public void changeCamera9(){
-		mainCamera.enabled = false;
-		camera3_1.enabled =false;
-		camera3_2.enabled= false;
-		camera3_3.enabled= false;
-		camera3_4.enabled= false;
-		camera3_5.enabled= false;
-		camera3_6.enabled= false;
-		camera3_7.enabled= false;
-		camera3_8.enabled= false;
-		camera3_9.enabled= true;
-		cameracnt=9;
+		if (cnt == 0) {
+						mainCamera.enabled = false;
+						camera3_1.enabled = false;
+						camera3_2.enabled = false;
+						camera3_3.enabled = false;
+						camera3_4.enabled = false;
+						camera3_5.enabled = false;
+						camera3_6.enabled = false;
+						camera3_7.enabled = false;
+						camera3_8.enabled = false;
+						camera3_9.enabled = true;
+						cnt = 9;
+			Debug.Log (cnt);
+				}
 		return;
 	}	
 	public void cameraBack(){
-		if (cameracnt >= 1) {
+		if (cnt != 0) {
 			mainCamera.enabled = true;
 			camera3_1.enabled = false;
 			camera3_2.enabled = false;
@@ -181,6 +205,7 @@ public class camerachange : MonoBehaviour {
 			camera3_7.enabled = false;
 			camera3_8.enabled = false;
 			camera3_9.enabled = false;
+			cnt = 0;
 		}
 		return;
 	}
