@@ -2,7 +2,6 @@
 using System.Collections;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(AudioSource))]
 public class changeCamera : MonoBehaviour {
 Camera mainCamera;//メインカメラ
 Camera camera3_1;//サブのカメラです
@@ -402,7 +401,7 @@ void Update () {
 
 	}	
 	public void cameraBack(){
-		if (cnt != 0) {
+		if (mainCamera.enabled == false) {
 			mainCamera.enabled = true;
 			camera3_1.enabled = false;
 			camera3_2.enabled = false;
